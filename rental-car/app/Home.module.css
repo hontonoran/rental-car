@@ -1,0 +1,71 @@
+.hero {
+  min-height: calc(100vh - 68px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 24px 60px;
+  color: #ffffff;
+  text-align: center;
+  background:
+    linear-gradient(rgba(18, 20, 23, 0.2), rgba(18, 20, 23, 0.6)),
+    url("/hero-car.jpg") center / cover no-repeat;
+}
+
+.overlay {
+  max-width: 780px;
+}
+
+.hero h1 {
+  margin: 0 0 16px;
+  font-size: 60px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.hero p {
+  margin: 0 0 40px;
+  font-size: 24px;
+  line-height: 1.33;
+  font-weight: 600;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 276px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--color-blue);
+  color: #ffffff;
+  font-weight: 600;
+  transition: background-color 180ms ease;
+}
+
+.button:hover {
+  background: var(--color-blue-hover);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: calc(100vh - 64px);
+    padding: 0 20px 48px;
+    background-position: 61% center;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+    line-height: 1.15;
+  }
+
+  .hero p {
+    margin-bottom: 32px;
+    font-size: 18px;
+  }
+
+  .button {
+    width: 100%;
+    min-width: 0;
+    max-width: 276px;
+  }
+}

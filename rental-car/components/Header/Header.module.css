@@ -1,0 +1,45 @@
+.header {
+  border-bottom: 1px solid #f2f4f7;
+  background: var(--color-surface);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 68px;
+  gap: 24px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.logo span {
+  color: var(--color-blue);
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+  font-weight: 500;
+}
+
+.nav a {
+  transition: color 180ms ease;
+}
+
+.nav a:hover {
+  color: var(--color-blue);
+}
+
+@media (max-width: 480px) {
+  .inner {
+    min-height: 64px;
+  }
+
+  .nav {
+    gap: 20px;
+  }
+}
