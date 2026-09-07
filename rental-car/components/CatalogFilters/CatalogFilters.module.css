@@ -1,0 +1,122 @@
+.form {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 56px;
+}
+
+.field,
+.mileage {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.field span,
+.mileage legend {
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+.field select,
+.mileage input {
+  height: 44px;
+  border: 0;
+  border-radius: 12px;
+  outline: none;
+  background: var(--color-surface);
+  color: var(--color-main);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.field select {
+  width: 204px;
+  padding: 0 16px;
+}
+
+.field select:disabled {
+  color: var(--color-muted);
+  cursor: not-allowed;
+}
+
+.mileage {
+  display: grid;
+  grid-template-columns: 160px 160px;
+}
+
+.mileage legend {
+  grid-column: 1 / -1;
+}
+
+.mileage label {
+  position: relative;
+  display: block;
+}
+
+.mileage label span {
+  position: absolute;
+  top: 50%;
+  left: 24px;
+  transform: translateY(-50%);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.mileage input {
+  width: 100%;
+  padding: 0 16px 0 68px;
+}
+
+.mileage label:first-of-type input {
+  border-radius: 12px 0 0 12px;
+  border-right: 1px solid var(--color-border);
+}
+
+.mileage label:last-of-type input {
+  border-radius: 0 12px 12px 0;
+}
+
+.form button {
+  width: 156px;
+  height: 44px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--color-blue);
+  color: #ffffff;
+  font-weight: 600;
+  transition: background-color 180ms ease;
+}
+
+.form button:hover {
+  background: var(--color-blue-hover);
+}
+
+.form button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .form {
+    align-items: stretch;
+    flex-direction: column;
+    max-width: 420px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .field select,
+  .form button {
+    width: 100%;
+  }
+
+  .mileage {
+    grid-template-columns: 1fr 1fr;
+  }
+}

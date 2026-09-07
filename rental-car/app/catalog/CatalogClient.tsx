@@ -1,11 +1,15 @@
 "use client";
 
 import Loader from "@/components/Loader/Loader";
+import CatalogFilters from "@/components/CatalogFilters/CatalogFilters";
 import { useCars } from "@/hooks/useCars";
+import type { CarFilters } from "@/types/car";
+import { useState } from "react";
 import styles from "./catalog.module.css";
 
 export default function CatalogClient() {
-  const { data, isError, isLoading } = useCars({});
+  const [filters, setFilters] = useState<CarFilters>({});
+  const { data, isError, isLoading } = useCars(filters);
   const cars = data?.pages.flatMap((page) => page.cars) ?? [];
 
   return (
@@ -15,6 +19,8 @@ export default function CatalogClient() {
           <p className={styles.eyebrow}>Catalog</p>
           <h1>Choose a rental car</h1>
         </div>
+
+        <CatalogFilters onSubmit={setFilters} />
 
         {isLoading && <Loader />}
 
