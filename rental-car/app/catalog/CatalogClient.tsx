@@ -2,6 +2,7 @@
 
 import Loader from "@/components/Loader/Loader";
 import CatalogFilters from "@/components/CatalogFilters/CatalogFilters";
+import CarCard from "@/components/CarCard/CarCard";
 import { useCars } from "@/hooks/useCars";
 import type { CarFilters } from "@/types/car";
 import { useState } from "react";
@@ -34,17 +35,9 @@ export default function CatalogClient() {
 
         {cars.length > 0 && (
           <ul className={styles.list}>
-            {cars.map((car) => (
-              <li className={styles.item} key={car.id}>
-                <div>
-                  <h2>
-                    {car.brand} {car.model}, {car.year}
-                  </h2>
-                  <p>
-                    {car.location.city} | {car.location.country} | {car.type}
-                  </p>
-                </div>
-                <strong>${car.rentalPrice}</strong>
+            {cars.map((car, index) => (
+              <li key={car.id}>
+                <CarCard car={car} priority={index < 4} />
               </li>
             ))}
           </ul>

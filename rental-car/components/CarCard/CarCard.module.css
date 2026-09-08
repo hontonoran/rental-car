@@ -1,0 +1,106 @@
+.card {
+  display: flex;
+  width: 276px;
+  min-height: 424px;
+  flex-direction: column;
+}
+
+.imageWrap {
+  position: relative;
+  height: 268px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #f2f4f7;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.favoriteButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+}
+
+.favoriteButton:hover,
+.favoriteButton:focus-visible {
+  color: var(--color-blue);
+}
+
+.favoriteIcon {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 1px 3px rgba(16, 24, 40, 0.35));
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.titleRow h2,
+.titleRow p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.titleRow h2 {
+  max-width: 200px;
+}
+
+.titleRow p {
+  flex: 0 0 auto;
+}
+
+.titleRow span {
+  color: var(--color-blue);
+}
+
+.meta {
+  min-height: 40px;
+  margin: 0 0 28px;
+  overflow: hidden;
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  margin-top: auto;
+  border-radius: 12px;
+  background: var(--color-blue);
+  color: #ffffff;
+  font-weight: 600;
+  transition: background-color 180ms ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  background: var(--color-blue-hover);
+}
+
+@media (max-width: 767px) {
+  .card {
+    width: 100%;
+  }
+}
