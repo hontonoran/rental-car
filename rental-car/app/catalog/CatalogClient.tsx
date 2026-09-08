@@ -10,7 +10,14 @@ import styles from "./catalog.module.css";
 
 export default function CatalogClient() {
   const [filters, setFilters] = useState<CarFilters>({});
-  const { data, isError, isLoading } = useCars(filters);
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isError,
+    isFetchingNextPage,
+    isLoading,
+  } = useCars(filters);
   const cars = data?.pages.flatMap((page) => page.cars) ?? [];
 
   return (
@@ -41,6 +48,17 @@ export default function CatalogClient() {
               </li>
             ))}
           </ul>
+        )}
+
+        {hasNextPage && (
+          <button
+            type="button"
+            className={styles.loadMore}
+            disabled={isFetchingNextPage}
+            onClick={() => fetchNextPage()}
+          >
+            {isFetchingNextPage ? "Loading..." : "Load more"}
+          </button>
         )}
       </div>
     </main>

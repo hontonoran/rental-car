@@ -26,9 +26,35 @@
   grid-template-columns: repeat(4, 276px);
   justify-content: center;
   gap: 48px 32px;
-  margin: 0 auto;
+  margin: 0 auto 80px;
   padding: 0;
   list-style: none;
+}
+
+.loadMore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 156px;
+  height: 44px;
+  margin: 0 auto;
+  padding: 0 32px;
+  border: 1px solid var(--color-blue);
+  border-radius: 12px;
+  background: #ffffff;
+  color: var(--color-main);
+  font-weight: 600;
+  transition: border-color 180ms ease;
+}
+
+.loadMore:hover,
+.loadMore:focus-visible {
+  border-color: var(--color-blue-hover);
+}
+
+.loadMore:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .message {
