@@ -1,24 +1,5 @@
 .catalog {
-  padding: 84px 0 124px;
-}
-
-.heading {
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-.eyebrow {
-  margin: 0 0 8px;
-  color: var(--color-blue);
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.heading h1 {
-  margin: 0;
-  font-size: 40px;
-  line-height: 1.2;
+  padding: 52px 0 124px;
 }
 
 .list {
@@ -71,15 +52,7 @@
 
 @media (max-width: 640px) {
   .catalog {
-    padding: 56px 0 80px;
-  }
-
-  .heading {
-    margin-bottom: 28px;
-  }
-
-  .heading h1 {
-    font-size: 32px;
+    padding: 40px 0 80px;
   }
 
   .list {
