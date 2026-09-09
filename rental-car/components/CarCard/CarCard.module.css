@@ -1,6 +1,7 @@
 .card {
   display: flex;
   width: 276px;
+  height: 100%;
   min-height: 424px;
   flex-direction: column;
 }
@@ -47,6 +48,8 @@
 
 .titleRow {
   display: flex;
+  min-height: 48px;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 8px;
@@ -62,6 +65,10 @@
 
 .titleRow h2 {
   max-width: 200px;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .titleRow p {
@@ -73,12 +80,15 @@
 }
 
 .meta {
-  min-height: 40px;
+  min-height: 36px;
   margin: 0 0 28px;
   overflow: hidden;
   color: var(--color-muted);
   font-size: 12px;
   line-height: 1.5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .button {

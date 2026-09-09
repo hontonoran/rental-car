@@ -31,6 +31,10 @@
   list-style: none;
 }
 
+.list li {
+  display: flex;
+}
+
 .loadMore {
   display: flex;
   align-items: center;

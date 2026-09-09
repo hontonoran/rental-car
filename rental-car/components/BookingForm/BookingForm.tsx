@@ -53,8 +53,7 @@ export default function BookingForm({ carId }: BookingFormProps) {
     const payload: BookingRequestPayload = {
       name: values.name.trim(),
       email: values.email.trim(),
-      bookingDate: values.bookingDate?.toISOString(),
-      comment: values.comment.trim() || undefined,
+      comment: values.comment.trim() || "No comment",
     };
 
     try {
