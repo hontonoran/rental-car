@@ -8,12 +8,27 @@ import Header from "@/components/Header/Header";
 import QueryProvider from "@/providers/QueryProvider";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://rental-car-hontonoran.vercel.app"),
   title: {
     default: "RentalCar",
     template: "%s | RentalCar",
   },
   description:
     "RentalCar is a web application for browsing, filtering and renting cars.",
+  openGraph: {
+    title: "RentalCar",
+    description:
+      "RentalCar is a web application for browsing, filtering and renting cars.",
+    url: "/",
+    siteName: "RentalCar",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "RentalCar",
+    description:
+      "RentalCar is a web application for browsing, filtering and renting cars.",
+  },
   icons: {
     icon: "/icon.svg",
     apple: "/apple-icon.png",
