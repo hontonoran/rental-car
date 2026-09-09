@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { ReactNode } from "react";
 import "modern-normalize/modern-normalize.css";
+import "react-datepicker/dist/react-datepicker.css";
 import "./globals.css";
 import Header from "@/components/Header/Header";
 import QueryProvider from "@/providers/QueryProvider";

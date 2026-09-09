@@ -1,23 +1,28 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import type { Car } from "@/types/car";
 import styles from "./CarDetails.module.css";
 
 interface CarDetailsProps {
   car: Car;
+  children?: ReactNode;
 }
 
-export default function CarDetails({ car }: CarDetailsProps) {
+export default function CarDetails({ car, children }: CarDetailsProps) {
   return (
     <section className={styles.section}>
-      <div className={styles.imageWrap}>
-        <Image
-          src={car.img}
-          alt={`${car.brand} ${car.model}`}
-          fill
-          priority
-          sizes="(max-width: 1199px) 100vw, 640px"
-          className={styles.image}
-        />
+      <div className={styles.leftSide}>
+        <div className={styles.imageWrap}>
+          <Image
+            src={car.img}
+            alt={`${car.brand} ${car.model}`}
+            fill
+            priority
+            sizes="(max-width: 1199px) 100vw, 640px"
+            className={styles.image}
+          />
+        </div>
+        {children}
       </div>
 
       <div className={styles.content}>

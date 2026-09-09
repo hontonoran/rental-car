@@ -6,6 +6,12 @@
   padding: 84px 0 104px;
 }
 
+.leftSide {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
 .imageWrap {
   position: relative;
   width: 100%;
@@ -129,6 +135,10 @@
 @media (max-width: 640px) {
   .section {
     padding: 56px 0 80px;
+  }
+
+  .leftSide {
+    gap: 32px;
   }
 
   .imageWrap {
