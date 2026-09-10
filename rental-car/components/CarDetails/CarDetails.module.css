@@ -1,9 +1,9 @@
 .section {
   display: grid;
   grid-template-columns: 640px 1fr;
-  gap: 72px;
+  gap: 32px;
   align-items: start;
-  padding: 84px 0 104px;
+  padding: 86px 0 120px;
 }
 
 .leftSide {
@@ -26,7 +26,10 @@
 }
 
 .content {
-  padding-top: 20px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 32px;
 }
 
 .titleRow {
@@ -47,7 +50,8 @@
 .titleRow span {
   flex: 0 0 auto;
   color: var(--color-muted);
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 1.43;
   font-weight: 500;
 }
 
@@ -55,9 +59,10 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 8px;
   margin-bottom: 16px;
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 1.43;
   font-weight: 500;
 }
 
@@ -75,18 +80,22 @@
 }
 
 .description {
-  margin: 0 0 68px;
-  font-size: 16px;
-  line-height: 1.5;
+  margin: 0 0 56px;
+  font-size: 14px;
+  line-height: 1.43;
   font-weight: 500;
 }
 
 .block {
-  margin-bottom: 64px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .block:last-child {
   margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
 }
 
 .block h2 {
@@ -99,7 +108,7 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -109,8 +118,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 16px;
-  line-height: 1.25;
+  font-size: 14px;
+  line-height: 1.43;
   font-weight: 500;
 }
 
@@ -123,17 +132,20 @@
 
 @media (max-width: 1199px) {
   .section {
-    grid-template-columns: 1fr;
-    gap: 40px;
+    grid-template-columns: 452px minmax(0, 1fr);
+    gap: 32px;
+    padding: 60px 0 88px;
   }
 
-  .content {
-    padding-top: 0;
+  .imageWrap {
+    height: 360px;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 900px) {
   .section {
+    grid-template-columns: 1fr;
+    gap: 40px;
     padding: 56px 0 80px;
   }
 
@@ -157,5 +169,11 @@
 
   .block {
     margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .content {
+    padding: 24px;
   }
 }

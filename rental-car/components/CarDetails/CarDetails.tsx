@@ -30,7 +30,9 @@ export default function CarDetails({ car, children }: CarDetailsProps) {
           <h1>
             {car.brand} {car.model}, {car.year}
           </h1>
-          <span>Id: {car.id.slice(0, 4)}</span>
+          <span>
+            Article: {car.stockNumber ?? car.id.slice(0, 4)}
+          </span>
         </div>
 
         <div className={styles.meta}>
@@ -40,7 +42,6 @@ export default function CarDetails({ car, children }: CarDetailsProps) {
             </svg>
             {car.location.city}, {car.location.country}
           </span>
-          <span>Mileage: {car.mileage.toLocaleString("en-US")} km</span>
         </div>
 
         <p className={styles.price}>${car.rentalPrice}</p>
@@ -86,6 +87,12 @@ export default function CarDetails({ car, children }: CarDetailsProps) {
                 <use href="/sprite.svg#icon-gear" />
               </svg>
               Engine Size: {car.engine}
+            </li>
+            <li>
+              <svg aria-hidden="true" className={styles.icon}>
+                <use href="/sprite.svg#icon-check-circle" />
+              </svg>
+              Mileage: {car.mileage.toLocaleString("en-US")} km
             </li>
           </ul>
         </section>

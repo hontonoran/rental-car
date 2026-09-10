@@ -1,7 +1,6 @@
 "use client";
 
-import DatePicker from "react-datepicker";
-import type { FieldProps, FormikHelpers } from "formik";
+import type { FormikHelpers } from "formik";
 import { Field, Form, Formik } from "formik";
 import toast from "react-hot-toast";
 import * as Yup from "yup";
@@ -16,14 +15,12 @@ interface BookingFormProps {
 interface BookingFormValues {
   name: string;
   email: string;
-  bookingDate: Date | null;
   comment: string;
 }
 
 const initialValues: BookingFormValues = {
   name: "",
   email: "",
-  bookingDate: null,
   comment: "",
 };
 
@@ -37,9 +34,6 @@ const validationSchema = Yup.object({
     .trim()
     .email("Enter a valid email")
     .required("Email is required"),
-  bookingDate: Yup.date()
-    .nullable()
-    .required("Booking date is required"),
   comment: Yup.string()
     .trim()
     .max(300, "Comment must be 300 characters or less"),
@@ -109,37 +103,6 @@ export default function BookingForm({ carId }: BookingFormProps) {
               <span className={styles.error}>{errors.email}</span>
             ) : null}
           </label>
-
-          <Field name="bookingDate">
-            {({ field, form }: FieldProps<Date | null, BookingFormValues>) => (
-              <label className={styles.field}>
-                <span className={styles.label}>Booking date</span>
-                <DatePicker
-                  selected={field.value}
-                  onChange={(date: Date | null) => {
-                    form.setFieldValue(field.name, date);
-                    form.setFieldTouched(field.name, true, false);
-                  }}
-                  onBlur={() => form.setFieldTouched(field.name, true)}
-                  placeholderText="Booking date"
-                  dateFormat="dd.MM.yyyy"
-                  minDate={new Date()}
-                  className={styles.input}
-                  wrapperClassName={styles.datePickerWrapper}
-                  calendarClassName={styles.calendar}
-                  popperClassName={styles.popper}
-                  ariaInvalid={
-                    touched.bookingDate && errors.bookingDate
-                      ? "true"
-                      : undefined
-                  }
-                />
-                {touched.bookingDate && errors.bookingDate ? (
-                  <span className={styles.error}>{errors.bookingDate}</span>
-                ) : null}
-              </label>
-            )}
-          </Field>
 
           <label className={styles.field}>
             <span className={styles.label}>Comment</span>

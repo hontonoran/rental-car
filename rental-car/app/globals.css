@@ -1,11 +1,14 @@
 :root {
-  --color-main: #101828;
-  --color-muted: #8d929a;
-  --color-blue: #3470ff;
-  --color-blue-hover: #0b44cd;
-  --color-border: #dadde1;
+  --color-main: #121417;
+  --color-muted: #8e929a;
+  --color-blue: #4ca8d0;
+  --color-blue-hover: #4ca8d0;
+  --color-border: #f2f4f7;
   --color-surface: #f7f7f7;
+  --color-header-bg: #ffffff;
   --color-bg: #ffffff;
+  --color-white: #ffffff;
+  --transition: 250ms ease;
 }
 
 html {
@@ -56,7 +59,25 @@ img {
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 120px;
+}
+
+@media (max-width: 1199px) {
+  .container {
+    padding: 0 64px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
 }

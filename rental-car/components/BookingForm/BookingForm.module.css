@@ -72,6 +72,7 @@
 
 .input[aria-invalid="true"],
 .textarea[aria-invalid="true"] {
+  background-color: #ffe4e4;
   box-shadow: 0 0 0 1px #d92d20;
 }
 
@@ -86,9 +87,9 @@
 
 .button {
   display: block;
-  min-width: 156px;
+  width: 100%;
   height: 44px;
-  margin: 8px auto 0;
+  margin: 24px 0 0;
   border: none;
   border-radius: 12px;
   background-color: var(--color-blue);
@@ -108,63 +109,6 @@
 .button:disabled {
   cursor: default;
   opacity: 0.65;
-}
-
-.datePickerWrapper {
-  display: block;
-  width: 100%;
-}
-
-.datePickerWrapper :global(.react-datepicker__input-container) {
-  width: 100%;
-}
-
-.datePickerWrapper input {
-  width: 100%;
-}
-
-.popper {
-  z-index: 20;
-}
-
-.calendar {
-  overflow: hidden !important;
-  border: 1px solid var(--color-blue) !important;
-  border-radius: 12px !important;
-  box-shadow: none !important;
-  font-family: inherit !important;
-}
-
-.calendar :global(.react-datepicker__header) {
-  border-bottom: 1px solid var(--color-border) !important;
-  background-color: var(--color-surface) !important;
-}
-
-.calendar :global(.react-datepicker__current-month),
-.calendar :global(.react-datepicker__day-name),
-.calendar :global(.react-datepicker__day) {
-  color: var(--color-main) !important;
-}
-
-.calendar :global(.react-datepicker__day--disabled),
-.calendar :global(.react-datepicker__day--outside-month) {
-  color: var(--color-muted) !important;
-}
-
-.calendar :global(.react-datepicker__day--selected),
-.calendar :global(.react-datepicker__day--keyboard-selected) {
-  border-radius: 50% !important;
-  background-color: var(--color-blue) !important;
-  color: #ffffff !important;
-}
-
-.calendar :global(.react-datepicker__navigation-icon::before) {
-  border-color: var(--color-blue) !important;
-}
-
-.calendar :global(.react-datepicker__triangle) {
-  fill: var(--color-surface) !important;
-  stroke: var(--color-blue) !important;
 }
 
 @media (max-width: 640px) {

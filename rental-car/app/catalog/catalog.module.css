@@ -1,10 +1,10 @@
 .catalog {
-  padding: 52px 0 124px;
+  padding: 84px 0 124px;
 }
 
 .list {
   display: grid;
-  grid-template-columns: repeat(4, minmax(260px, 1fr));
+  grid-template-columns: repeat(4, 276px);
   justify-content: center;
   gap: 48px 32px;
   margin: 0 auto 80px;
@@ -87,12 +87,12 @@
 
 @media (min-width: 641px) and (max-width: 1023px) {
   .list {
-    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    grid-template-columns: repeat(2, 276px);
   }
 }
 
 @media (min-width: 1024px) and (max-width: 1439px) {
   .list {
-    grid-template-columns: repeat(3, minmax(260px, 1fr));
+    grid-template-columns: repeat(3, 276px);
   }
 }

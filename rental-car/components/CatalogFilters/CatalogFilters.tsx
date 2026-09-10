@@ -140,7 +140,11 @@ export default function CatalogFilters({
         </label>
       </fieldset>
 
-      <div className={styles.actions}>
+      <div
+        className={`${styles.actions} ${
+          shouldShowFavoritesControl ? styles.actionsWithFavorite : ""
+        }`}
+      >
         {shouldShowFavoritesControl && (
           <button
             type="button"

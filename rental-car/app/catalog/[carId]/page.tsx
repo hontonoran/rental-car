@@ -4,6 +4,7 @@ import BookingForm from "@/components/BookingForm/BookingForm";
 import CarDetails from "@/components/CarDetails/CarDetails";
 import { BACKEND_BASE_URL } from "@/lib/backend";
 import type { Car } from "@/types/car";
+import styles from "./page.module.css";
 
 interface CarDetailsPageProps {
   params: Promise<{ carId: string }>;
@@ -66,7 +67,7 @@ export default async function CarDetailsPage({
   }
 
   return (
-    <main>
+    <main className={styles.page}>
       <div className="container">
         <CarDetails car={car}>
           <BookingForm carId={car.id} />
