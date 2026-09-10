@@ -11,8 +11,6 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <main className={styles.hero}>
-      {/* Rendered through next/image so it is served as AVIF/WebP and can be
-          preloaded as the LCP element — a CSS background can be neither. */}
       <Image
         src={heroImage}
         alt=""
@@ -28,6 +26,7 @@ export default function HomePage() {
         <p className={styles.subtitle}>
           Reliable and budget-friendly rentals for any journey
         </p>
+
         <Link href="/catalog" className={styles.button}>
           View Catalog
         </Link>

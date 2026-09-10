@@ -70,6 +70,7 @@ export default function CarCard({ car, priority = false }: CarCardProps) {
             {car.brand} <span className={styles.model}>{car.model}</span>,{" "}
             {car.year}
           </span>
+
           <span className={styles.price}>${car.rentalPrice}</span>
         </h2>
 
@@ -86,8 +87,6 @@ export default function CarCard({ car, priority = false }: CarCardProps) {
         rel="noopener noreferrer"
         className={styles.button}
       >
-        {/* The mock-up shows only "Read more"; the hidden suffix makes each
-            link distinguishable for screen readers and search engines. */}
         Read more
         <span className="visually-hidden">
           {` about ${car.brand} ${car.model}, ${car.year}`}

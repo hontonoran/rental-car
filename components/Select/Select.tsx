@@ -6,9 +6,9 @@ import styles from "./Select.module.css";
 
 export interface SelectOption {
   value: string;
-  /** Text shown inside the dropdown panel. */
+
   label: string;
-  /** Text shown on the closed control, when it differs from `label`. */
+
   displayLabel?: string;
 }
 
@@ -22,10 +22,6 @@ interface SelectProps {
   onChange: (value: string) => void;
 }
 
-/**
- * Listbox-style dropdown from the mock-up: a native `<select>` cannot render the
- * panel, the option colours or the chevron the design asks for.
- */
 export default function Select({
   label,
   placeholder,
@@ -71,7 +67,6 @@ export default function Select({
     }
   }, [isOpen, activeIndex]);
 
-  // Nothing selected means nothing highlighted — the first arrow key picks a row.
   const open = () => {
     setActiveIndex(selectedIndex);
     setIsOpen(true);
@@ -153,12 +148,12 @@ export default function Select({
         <span className={styles.value} id={valueId}>
           {selectedLabel || placeholder}
         </span>
+
         <LuChevronDown
           aria-hidden="true"
           className={isOpen ? `${styles.icon} ${styles.iconOpen}` : styles.icon}
         />
       </button>
-
       {isOpen && options.length > 0 && (
         <ul
           ref={listRef}

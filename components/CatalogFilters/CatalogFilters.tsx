@@ -99,7 +99,6 @@ export default function CatalogFilters({
 
           <fieldset className={styles.mileage}>
             <legend className={styles.legend}>Car mileage / km</legend>
-
             <div className={styles.mileageInputs}>
               <input
                 className={`${styles.input} ${styles.inputFrom}`}
@@ -110,6 +109,7 @@ export default function CatalogFilters({
                 value={minMileage}
                 onChange={(event) => setMinMileage(toDigits(event.target.value))}
               />
+
               <input
                 className={`${styles.input} ${styles.inputTo}`}
                 type="text"

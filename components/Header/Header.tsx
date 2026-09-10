@@ -10,11 +10,8 @@ export default function Header() {
   const pathname = usePathname();
   const favoriteCount = useFavoriteIds().length;
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+  const isActive = (href: string) => pathname === href;
 
-  // The Favorites entry only earns its place once something is saved — but it
-  // must stay while the user is on the page, even after unsaving the last car.
   const showFavorites = favoriteCount > 0 || isActive("/favorites");
 
   const links = [

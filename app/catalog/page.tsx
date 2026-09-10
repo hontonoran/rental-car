@@ -3,6 +3,7 @@ import {
   HydrationBoundary,
   QueryClient,
   dehydrate,
+  noop,
 } from "@tanstack/react-query";
 import CatalogClient from "./CatalogClient";
 import { parseFilters } from "@/lib/filters";
@@ -32,11 +33,9 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
   const filters = parseFilters(await searchParams);
   const queryClient = new QueryClient();
 
-  // Fill the cache on the server so the first paint already shows the cars
-  // that match the filters in the URL.
   await Promise.all([
-    queryClient.prefetchInfiniteQuery(carsQueryOptions(filters)),
-    queryClient.prefetchQuery(carFiltersQueryOptions()),
+    queryClient.infiniteQuery(carsQueryOptions(filters)).catch(noop),
+    queryClient.query(carFiltersQueryOptions()).catch(noop),
   ]);
 
   return (

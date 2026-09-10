@@ -1,5 +1,4 @@
 :root {
-  /* Colours — Figma "UI KIT" tokens */
   --color-main: #101828;
   --color-gray: #8d929a;
   --color-gray-light: #dadde1;
@@ -12,7 +11,6 @@
   --color-error: #ec383b;
   --color-error-light: #ffdfdf;
 
-  /* Layout */
   --header-height: 68px;
   --container-max: 1440px;
   --container-padding: 120px;

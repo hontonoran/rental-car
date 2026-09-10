@@ -11,8 +11,6 @@ export default function QueryProvider({ children }: { children: ReactNode }) {
       new QueryClient({
         defaultOptions: {
           queries: {
-            // Server-prefetched data stays fresh long enough that hydration
-            // does not trigger an immediate refetch on the client.
             staleTime: 60 * 1000,
             retry: 1,
             refetchOnWindowFocus: false,

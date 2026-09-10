@@ -21,6 +21,7 @@ export default function GlobalError({ error, reset }: ErrorProps) {
           We could not load this page. Please check your connection and try
           again.
         </p>
+
         <button type="button" className={styles.button} onClick={reset}>
           Try again
         </button>

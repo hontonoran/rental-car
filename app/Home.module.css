@@ -15,7 +15,6 @@
   object-fit: cover;
 }
 
-/* Keeps the headline readable over the brighter parts of the photo. */
 .hero::after {
   content: "";
   position: absolute;

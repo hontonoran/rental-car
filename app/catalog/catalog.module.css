@@ -47,7 +47,6 @@
   cursor: progress;
 }
 
-/* Loading overlay — dims the grid while the custom loader sits on top. */
 .loadingArea {
   position: relative;
 }
@@ -94,7 +93,6 @@
   background-color: rgba(0, 170, 212, 0.18);
 }
 
-/* Empty and error states */
 .state {
   display: flex;
   flex-direction: column;

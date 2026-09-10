@@ -10,6 +10,7 @@ export default function NotFound() {
         <p className={styles.text}>
           The page you are looking for does not exist or has been moved.
         </p>
+
         <Link href="/catalog" className={styles.button}>
           Go to catalog
         </Link>

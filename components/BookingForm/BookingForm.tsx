@@ -24,8 +24,6 @@ const initialValues: BookingFormValues = {
   comment: "",
 };
 
-// The design shows one message per field, whether the value is missing or
-// malformed ("12345" in the Name field is an error state in the mock-up).
 const validationSchema = Yup.object({
   name: Yup.string()
     .trim()
@@ -74,9 +72,7 @@ export default function BookingForm({ carId }: BookingFormProps) {
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      // Validating on blur would surface an error — and grow the form — while
-      // the pointer is already going down on Send, so that click would miss.
-      // Errors appear on the first submit, then track every keystroke.
+
       validateOnBlur={false}
       onSubmit={handleSubmit}
     >
@@ -102,14 +98,12 @@ export default function BookingForm({ carId }: BookingFormProps) {
                       isTextarea ? styles.controlTextarea : ""
                     } ${isInvalid ? styles.controlInvalid : ""}`}
                   >
-                    {/* Label floats out of the box once the field has content. */}
                     {hasValue && (
                       <span className={styles.floatingLabel}>
                         {field.label}
                       </span>
                     )}
                     <span className="visually-hidden">{field.label}</span>
-
                     <Field
                       className={styles.input}
                       as={isTextarea ? "textarea" : undefined}
@@ -121,7 +115,6 @@ export default function BookingForm({ carId }: BookingFormProps) {
                       }
                       aria-invalid={isInvalid}
                     />
-
                     {isInvalid && (
                       <LuCircleAlert
                         aria-hidden="true"
@@ -129,7 +122,6 @@ export default function BookingForm({ carId }: BookingFormProps) {
                       />
                     )}
                   </label>
-
                   {isInvalid && (
                     <span className={styles.error} role="alert">
                       {errors[field.name]}

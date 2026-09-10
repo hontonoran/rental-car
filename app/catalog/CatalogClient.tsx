@@ -49,20 +49,19 @@ export default function CatalogClient({ filters }: CatalogClientProps) {
     <main className={styles.catalog}>
       <div className="container">
         <h1 className="visually-hidden">Car catalog</h1>
-
         <CatalogFilters
           key={buildFiltersQuery(filters)}
           filters={filters}
           onSubmit={applyFilters}
           onClear={() => applyFilters({})}
         />
-
         {error && (
           <div className={styles.state}>
             <p className={styles.stateTitle}>We could not load the cars</p>
             <p className={styles.stateText}>
               Something went wrong on our side. Please try again.
             </p>
+
             <button
               type="button"
               className={styles.outlineButton}
@@ -81,11 +80,13 @@ export default function CatalogClient({ filters }: CatalogClientProps) {
               className={styles.stateImage}
               priority
             />
+
             <p className={styles.stateTitle}>No cars found</p>
             <p className={styles.stateText}>
               We couldn&apos;t find any cars that match your current filters.
               Try changing your search criteria or reset the filters.
             </p>
+
             <button
               type="button"
               className={styles.outlineButton}

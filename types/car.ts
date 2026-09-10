@@ -41,10 +41,6 @@ export interface FiltersResponse {
   };
 }
 
-/**
- * Catalog filters. Field names match both the API query parameters and the
- * `/catalog` search params, so a filter set round-trips through the URL as is.
- */
 export interface CarFilters {
   brand?: string;
   price?: string;

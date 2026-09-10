@@ -2,10 +2,6 @@ import { infiniteQueryOptions, queryOptions } from "@tanstack/react-query";
 import { getCarFilters, getCars } from "@/lib/api";
 import type { CarFilters, CarsResponse } from "@/types/car";
 
-/**
- * Shared query definitions so the server component prefetches exactly the same
- * cache entries the client component subscribes to.
- */
 export function carsQueryOptions(filters: CarFilters) {
   return infiniteQueryOptions({
     queryKey: ["cars", filters] as const,

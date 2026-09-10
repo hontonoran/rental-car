@@ -22,7 +22,6 @@
   object-fit: cover;
 }
 
-/* Mock-up gradient — also keeps the favourite button readable on light photos. */
 .media::after {
   content: "";
   position: absolute;

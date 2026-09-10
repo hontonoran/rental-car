@@ -1,8 +1,3 @@
-/**
- * RentalCar word-mark exported from the Figma design. The mark is outlined
- * artwork rather than live text, so no font weight can reproduce it — it is
- * inlined as SVG to keep it crisp and avoid an extra request on every page.
- */
 export default function Logo({ className }: { className?: string }) {
   return (
     <svg

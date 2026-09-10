@@ -8,7 +8,6 @@ import type {
   FiltersResponse,
 } from "@/types/car";
 
-/** Cars shown per catalog page — one "Load more" step is three rows of four cards. */
 export const CARS_PER_PAGE = 12;
 
 export const api = axios.create({

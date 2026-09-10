@@ -14,8 +14,6 @@ export default function FavoritesClient() {
 
   const { data: cars, isPending, isError } = useQuery({
     queryKey: ["favorite-cars", favoriteIds],
-    // Cars are fetched by id, so a saved car stays reachable no matter which
-    // catalog page it originally came from.
     queryFn: async ({ signal }) => {
       const results = await Promise.allSettled(
         favoriteIds.map((id) => getCarById(id, signal)),
@@ -39,13 +37,13 @@ export default function FavoritesClient() {
     <main className={styles.page}>
       <div className="container">
         <h1 className={styles.title}>Favorite cars</h1>
-
         {isEmpty && (
           <div className={styles.state}>
             <p className={styles.stateTitle}>No favorite cars yet</p>
             <p className={styles.stateText}>
               Tap the heart on a car card and it will be saved here.
             </p>
+
             <Link href="/catalog" className={styles.button}>
               Go to catalog
             </Link>
@@ -68,6 +66,7 @@ export default function FavoritesClient() {
             <p className={styles.stateTitle}>
               Your saved cars are no longer available
             </p>
+
             <Link href="/catalog" className={styles.button}>
               Go to catalog
             </Link>

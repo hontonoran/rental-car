@@ -11,6 +11,7 @@ export default function CarNotFound() {
           This car is no longer available. Browse the catalog to find another
           one.
         </p>
+
         <Link href="/catalog" className={styles.button}>
           Go to catalog
         </Link>
