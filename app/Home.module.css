@@ -1,0 +1,111 @@
+.hero {
+  position: relative;
+  display: flex;
+  min-height: calc(100svh - var(--header-height));
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  padding: 120px 24px 60px;
+  color: var(--color-white);
+  text-align: center;
+  background-color: var(--color-main);
+}
+
+.heroImage {
+  object-fit: cover;
+}
+
+/* Keeps the headline readable over the brighter parts of the photo. */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 20, 23, 0.15) 0%,
+    rgba(18, 20, 23, 0.55) 100%
+  );
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  max-width: 783px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  margin-bottom: 16px;
+  font-size: 60px;
+  line-height: 72px;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin-bottom: 40px;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+}
+
+.button {
+  display: inline-flex;
+  width: 276px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  transition: background-color var(--transition);
+}
+
+.button:hover,
+.button:focus-visible {
+  background-color: var(--color-blue-hover);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding: 96px 24px 56px;
+  }
+
+  .title {
+    font-size: 44px;
+    line-height: 52px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero {
+    align-items: center;
+    padding: 64px 16px;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .subtitle {
+    margin-bottom: 32px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .button {
+    width: 100%;
+    max-width: 276px;
+  }
+}

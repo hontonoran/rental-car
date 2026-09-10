@@ -1,0 +1,51 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Logo from "@/components/Logo/Logo";
+import { useFavoriteIds } from "@/hooks/useFavorites";
+import styles from "./Header.module.css";
+
+export default function Header() {
+  const pathname = usePathname();
+  const favoriteCount = useFavoriteIds().length;
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
+
+  // The Favorites entry only earns its place once something is saved — but it
+  // must stay while the user is on the page, even after unsaving the last car.
+  const showFavorites = favoriteCount > 0 || isActive("/favorites");
+
+  const links = [
+    { href: "/", label: "Home" },
+    { href: "/catalog", label: "Catalog" },
+    ...(showFavorites ? [{ href: "/favorites", label: "Favorites" }] : []),
+  ];
+
+  return (
+    <header className={styles.header}>
+      <div className={`container ${styles.inner}`}>
+        <Link href="/" className={styles.logo} aria-label="RentalCar — home">
+          <Logo />
+        </Link>
+
+        <nav className={styles.nav} aria-label="Main navigation">
+          {links.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className={isActive(href) ? styles.active : undefined}
+              aria-current={isActive(href) ? "page" : undefined}
+            >
+              {label}
+              {href === "/favorites" && favoriteCount > 0 && (
+                <span className={styles.badge}>{favoriteCount}</span>
+              )}
+            </Link>
+          ))}
+        </nav>
+      </div>
+    </header>
+  );
+}

@@ -1,0 +1,141 @@
+.card {
+  display: flex;
+  width: 100%;
+  min-height: 464px;
+  flex: 1;
+  flex-direction: column;
+  gap: 24px;
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-white);
+}
+
+.media {
+  position: relative;
+  height: 268px;
+  overflow: hidden;
+  border-radius: 14px;
+  background-color: var(--color-badges);
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* Mock-up gradient — also keeps the favourite button readable on light photos. */
+.media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 20, 23, 0.5) 2.5%,
+    rgba(18, 20, 23, 0) 41%
+  );
+  pointer-events: none;
+}
+
+.favorite {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 1;
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--color-white);
+  transition: color var(--transition);
+}
+
+.favorite:hover,
+.favorite:focus-visible {
+  color: var(--color-blue);
+}
+
+.favorite svg {
+  width: 24px;
+  height: 24px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.titleText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.model {
+  color: var(--color-blue);
+}
+
+.price {
+  flex: 0 0 auto;
+}
+
+.details {
+  display: flex;
+  min-height: 52px;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 4px 0;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-page);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+.details li {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.details li:not(:last-child)::after {
+  content: "";
+  width: 1px;
+  height: 16px;
+  margin: 0 6px;
+  background-color: var(--color-gray-light);
+}
+
+.button {
+  display: flex;
+  height: 44px;
+  margin-top: auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  transition: background-color var(--transition);
+}
+
+.button:hover,
+.button:focus-visible {
+  background-color: var(--color-blue-hover);
+}
