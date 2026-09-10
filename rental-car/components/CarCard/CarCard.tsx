@@ -30,7 +30,7 @@ export default function CarCard({ car, priority = false }: CarCardProps) {
           src={car.img}
           alt={`${car.brand} ${car.model}`}
           fill
-          sizes="(max-width: 767px) 100vw, 276px"
+          sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1023px) calc((100vw - 80px) / 2), (max-width: 1439px) calc((100vw - 112px) / 3), 276px"
           priority={priority}
           className={styles.image}
         />

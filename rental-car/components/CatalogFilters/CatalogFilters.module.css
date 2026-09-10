@@ -1,8 +1,13 @@
 .form {
-  display: flex;
+  display: grid;
+  grid-template-columns:
+    minmax(180px, 204px)
+    minmax(180px, 204px)
+    minmax(280px, 320px)
+    auto;
   align-items: flex-end;
   justify-content: center;
-  gap: 16px;
+  gap: 16px clamp(12px, 1.2vw, 16px);
   margin-bottom: 56px;
 }
 
@@ -36,7 +41,7 @@
 }
 
 .field select {
-  width: 204px;
+  width: 100%;
   padding: 0 16px;
 }
 
@@ -82,7 +87,13 @@
   border-radius: 0 12px 12px 0;
 }
 
-.form button {
+.actions {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.searchButton {
   width: 156px;
   height: 44px;
   border: 0;
@@ -93,36 +104,52 @@
   transition: background-color 180ms ease;
 }
 
-.form button:hover {
+.searchButton:hover {
   background: var(--color-blue-hover);
 }
 
-.form button:disabled {
+.searchButton:disabled {
   opacity: 0.7;
   cursor: not-allowed;
 }
 
-.favoritesLink {
+.favoriteToggle {
   display: inline-flex;
   width: 44px;
   height: 44px;
+  flex: 0 0 44px;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--color-blue);
   border-radius: 12px;
+  background: #ffffff;
   color: var(--color-blue);
   transition:
+    background-color 180ms ease,
     border-color 180ms ease,
     color 180ms ease;
 }
 
-.favoritesLink:hover,
-.favoritesLink:focus-visible {
+.favoriteToggle:hover,
+.favoriteToggle:focus-visible {
   border-color: var(--color-blue-hover);
   color: var(--color-blue-hover);
 }
 
-.favoritesLink svg {
+.favoriteToggleActive {
+  border-color: var(--color-blue);
+  background: var(--color-blue);
+  color: #ffffff;
+}
+
+.favoriteToggleActive:hover,
+.favoriteToggleActive:focus-visible {
+  border-color: var(--color-blue-hover);
+  background: var(--color-blue-hover);
+  color: #ffffff;
+}
+
+.favoriteToggle svg {
   width: 24px;
   height: 24px;
 }
@@ -130,22 +157,47 @@
 @media (max-width: 900px) {
   .form {
     align-items: stretch;
-    flex-direction: column;
-    max-width: 420px;
+    grid-template-columns: 1fr;
+    max-width: 520px;
     margin-right: auto;
     margin-left: auto;
   }
 
-  .field select,
-  .form button {
+  .field select {
     width: 100%;
   }
 
-  .favoritesLink {
-    width: 100%;
+  .actions {
+    justify-content: center;
   }
 
   .mileage {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1199px) {
+  .form {
+    grid-template-columns: 204px 204px 320px;
+  }
+
+  .mileage {
+    grid-template-columns: 160px 160px;
+  }
+
+  .actions {
+    grid-column: 3;
+    justify-self: end;
+  }
+}
+
+@media (max-width: 640px) {
+  .actions {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+
+  .searchButton {
+    width: 100%;
   }
 }

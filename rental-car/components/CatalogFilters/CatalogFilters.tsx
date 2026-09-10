@@ -1,15 +1,17 @@
 "use client";
 
-import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import type { SyntheticEvent } from "react";
 import { useMemo, useState } from "react";
-import { GoHeart } from "react-icons/go";
+import { GoHeart, GoHeartFill } from "react-icons/go";
 import { getCarFilters } from "@/lib/api";
 import type { CarFilters } from "@/types/car";
 import styles from "./CatalogFilters.module.css";
 
 interface CatalogFiltersProps {
+  favoriteCount: number;
+  showFavoritesOnly: boolean;
+  onToggleFavorites: () => void;
   onSubmit: (filters: CarFilters) => void;
 }
 
@@ -35,11 +37,17 @@ function normalizeMileage(value: string) {
   return value.replace(/\D/g, "");
 }
 
-export default function CatalogFilters({ onSubmit }: CatalogFiltersProps) {
+export default function CatalogFilters({
+  favoriteCount,
+  showFavoritesOnly,
+  onSubmit,
+  onToggleFavorites,
+}: CatalogFiltersProps) {
   const [brand, setBrand] = useState("");
   const [rentalPrice, setRentalPrice] = useState("");
   const [minMileage, setMinMileage] = useState("");
   const [maxMileage, setMaxMileage] = useState("");
+  const shouldShowFavoritesControl = favoriteCount > 0 || showFavoritesOnly;
 
   const {
     data: filterData,
@@ -132,18 +140,40 @@ export default function CatalogFilters({ onSubmit }: CatalogFiltersProps) {
         </label>
       </fieldset>
 
-      <button type="submit" disabled={isLoading}>
-        Search
-      </button>
+      <div className={styles.actions}>
+        {shouldShowFavoritesControl && (
+          <button
+            type="button"
+            className={
+              showFavoritesOnly
+                ? `${styles.favoriteToggle} ${styles.favoriteToggleActive}`
+                : styles.favoriteToggle
+            }
+            aria-label={
+              showFavoritesOnly
+                ? `Show all cars. ${favoriteCount} favorite cars saved.`
+                : `Show favorite cars. ${favoriteCount} favorite cars saved.`
+            }
+            aria-pressed={showFavoritesOnly}
+            title="Favorite cars"
+            onClick={onToggleFavorites}
+          >
+            {showFavoritesOnly ? (
+              <GoHeartFill aria-hidden="true" />
+            ) : (
+              <GoHeart aria-hidden="true" />
+            )}
+          </button>
+        )}
 
-      <Link
-        href="/favorites"
-        className={styles.favoritesLink}
-        aria-label="Open favorite cars"
-        title="Favorite cars"
-      >
-        <GoHeart aria-hidden="true" />
-      </Link>
+        <button
+          type="submit"
+          className={styles.searchButton}
+          disabled={isLoading}
+        >
+          Search
+        </button>
+      </div>
     </form>
   );
 }
