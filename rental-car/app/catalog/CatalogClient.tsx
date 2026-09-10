@@ -23,11 +23,6 @@ export default function CatalogClient() {
   return (
     <main className={styles.catalog}>
       <div className="container">
-        <div className={styles.heading}>
-          <p className={styles.eyebrow}>Catalog</p>
-          <h1>Choose a rental car</h1>
-        </div>
-
         <CatalogFilters onSubmit={setFilters} />
 
         {isLoading && <Loader />}

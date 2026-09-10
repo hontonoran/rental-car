@@ -1,7 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
-import { FormEvent, useMemo, useState } from "react";
+import type { SyntheticEvent } from "react";
+import { useMemo, useState } from "react";
+import { GoHeart } from "react-icons/go";
 import { getCarFilters } from "@/lib/api";
 import type { CarFilters } from "@/types/car";
 import styles from "./CatalogFilters.module.css";
@@ -52,7 +55,7 @@ export default function CatalogFilters({ onSubmit }: CatalogFiltersProps) {
     [filterData?.price.max, filterData?.price.min],
   );
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     onSubmit({
@@ -132,6 +135,15 @@ export default function CatalogFilters({ onSubmit }: CatalogFiltersProps) {
       <button type="submit" disabled={isLoading}>
         Search
       </button>
+
+      <Link
+        href="/favorites"
+        className={styles.favoritesLink}
+        aria-label="Open favorite cars"
+        title="Favorite cars"
+      >
+        <GoHeart aria-hidden="true" />
+      </Link>
     </form>
   );
 }

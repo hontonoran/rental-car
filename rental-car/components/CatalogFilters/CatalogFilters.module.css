@@ -102,6 +102,31 @@
   cursor: not-allowed;
 }
 
+.favoritesLink {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-blue);
+  border-radius: 12px;
+  color: var(--color-blue);
+  transition:
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.favoritesLink:hover,
+.favoritesLink:focus-visible {
+  border-color: var(--color-blue-hover);
+  color: var(--color-blue-hover);
+}
+
+.favoritesLink svg {
+  width: 24px;
+  height: 24px;
+}
+
 @media (max-width: 900px) {
   .form {
     align-items: stretch;
@@ -113,6 +138,10 @@
 
   .field select,
   .form button {
+    width: 100%;
+  }
+
+  .favoritesLink {
     width: 100%;
   }
 
