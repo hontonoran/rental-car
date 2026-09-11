@@ -1,7 +1,5 @@
 # RentalCar
 
-*[Українською](./README.uk.md)*
-
 A car rental web app built from a Figma design: browse the catalog, filter cars
 on the server, load more results page by page, open a car's details in a new tab
 and send a booking request.
@@ -41,6 +39,20 @@ and send a booking request.
 | Hosting | Vercel |
 
 The API is the GoIT car rental backend: `https://car-rental-api.goit.study`.
+
+## Quality check
+
+The deployed version was checked with Lighthouse on desktop:
+
+| Metric | Score |
+| --- | --- |
+| Performance | 100 |
+| Accessibility | 95 |
+| Best Practices | 100 |
+| SEO | 100 |
+
+Audit screenshot:
+[docs/lighthouse/2026-09-11-home-desktop.png](./docs/lighthouse/2026-09-11-home-desktop.png)
 
 ## Architecture
 
@@ -102,6 +114,10 @@ The app runs at http://localhost:3000.
 
 None are required. `NEXT_PUBLIC_SITE_URL` can be set to the deployed origin so
 that metadata links resolve to absolute URLs; it defaults to the Vercel URL.
+
+## Language
+
+This README is also available in [Ukrainian](./README.uk.md).
 
 ## Author
 
