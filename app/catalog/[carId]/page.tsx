@@ -5,6 +5,7 @@ import { isAxiosError } from "axios";
 import BookingForm from "@/components/BookingForm/BookingForm";
 import CarDetails from "@/components/CarDetails/CarDetails";
 import { getCarById } from "@/lib/api";
+import { SITE_NAME } from "@/lib/site";
 import type { Car } from "@/types/car";
 import styles from "./page.module.css";
 
@@ -47,7 +48,7 @@ export async function generateMetadata({
       title: `${title} | RentalCar`,
       description: car.description,
       url: `/catalog/${carId}`,
-      siteName: "RentalCar",
+      siteName: SITE_NAME,
       type: "website",
       images: [{ url: car.img, width: 640, height: 512, alt: title }],
     },

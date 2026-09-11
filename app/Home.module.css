@@ -15,17 +15,6 @@
   object-fit: cover;
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(18, 20, 23, 0.15) 0%,
-    rgba(18, 20, 23, 0.55) 100%
-  );
-}
-
 .content {
   position: relative;
   z-index: 1;

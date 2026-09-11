@@ -9,6 +9,7 @@ import CatalogClient from "./CatalogClient";
 import { parseFilters } from "@/lib/filters";
 import type { RawSearchParams } from "@/lib/filters";
 import { carFiltersQueryOptions, carsQueryOptions } from "@/lib/queries";
+import { OG_IMAGE, SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Catalog",
@@ -20,8 +21,9 @@ export const metadata: Metadata = {
     description:
       "Browse every car available at RentalCar and filter by brand, price per hour and mileage.",
     url: "/catalog",
-    siteName: "RentalCar",
+    siteName: SITE_NAME,
     type: "website",
+    images: [OG_IMAGE],
   },
 };
 

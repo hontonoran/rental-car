@@ -5,7 +5,7 @@ import "modern-normalize/modern-normalize.css";
 import "./globals.css";
 import Header from "@/components/Header/Header";
 import QueryProvider from "@/providers/QueryProvider";
-import { SITE_URL } from "@/lib/site";
+import { OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -29,9 +29,10 @@ export const metadata: Metadata = {
     description:
       "Browse the RentalCar catalog, filter by brand, price and mileage, and book the car you like.",
     url: "/",
-    siteName: "RentalCar",
+    siteName: SITE_NAME,
     type: "website",
     locale: "en_US",
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",

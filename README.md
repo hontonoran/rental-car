@@ -1,5 +1,7 @@
 # RentalCar
 
+*[Українською](./README.uk.md)*
+
 A car rental web app built from a Figma design: browse the catalog, filter cars
 on the server, load more results page by page, open a car's details in a new tab
 and send a booking request.
@@ -63,6 +65,16 @@ providers/      TanStack Query provider
 types/          shared API types
 ```
 
+### Assets
+
+`app/icon.svg`, `app/apple-icon.png` and `app/opengraph-image.jpg` are Next.js
+file conventions: their names alone generate the favicon, the iOS touch icon
+and the social preview card, so they must stay in `app/` under exactly those
+names. Renaming one silently removes the corresponding tag from `<head>`.
+
+Images that components import — `hero-car.jpg`, `no-cars-found.png` — live in
+`public/` and are served through `next/image` as optimised WebP.
+
 ## Getting started
 
 Requirements: Node.js 20+ and npm.
@@ -85,3 +97,12 @@ The app runs at http://localhost:3000.
 | `npm start` | Serve the production build |
 | `npm run lint` | Run ESLint |
 | `npm run typecheck` | Run the TypeScript compiler |
+
+### Environment variables
+
+None are required. `NEXT_PUBLIC_SITE_URL` can be set to the deployed origin so
+that metadata links resolve to absolute URLs; it defaults to the Vercel URL.
+
+## Author
+
+Anastasiia Kuzmina — [github.com/hontonoran](https://github.com/hontonoran)
