@@ -52,7 +52,7 @@
 | SEO | 100 |
 
 Скриншот перевірки:
-[docs/lighthouse/2026-09-11-home-desktop.png](./docs/lighthouse/2026-09-11-home-desktop.png)
+[docs/lighthouse/perfomance-results.png](./docs/lighthouse/perfomance-results.png)
 
 ## Архітектура
 
