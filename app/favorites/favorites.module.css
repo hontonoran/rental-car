@@ -67,7 +67,7 @@
   background-color: var(--color-blue-hover);
 }
 
-@media (max-width: 1439px) {
+@media (max-width: 1399px) {
   .list {
     grid-template-columns: repeat(3, 276px);
   }

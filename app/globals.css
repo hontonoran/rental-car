@@ -24,6 +24,7 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -93,6 +94,12 @@ svg {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--container-padding);
+}
+
+@media (min-width: 1400px) and (max-width: 1439px) {
+  :root {
+    --container-padding: 96px;
+  }
 }
 
 @media (max-width: 1199px) {
