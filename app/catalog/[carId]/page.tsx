@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { isAxiosError } from "axios";
 import BookingForm from "@/components/BookingForm/BookingForm";
 import CarDetails from "@/components/CarDetails/CarDetails";
+import RecordView from "@/components/RecentlyViewed/RecordView";
 import { getCarById } from "@/lib/api";
 import { SITE_NAME } from "@/lib/site";
 import type { Car } from "@/types/car";
@@ -65,6 +66,8 @@ export default async function CarPage({ params }: CarPageProps) {
 
   return (
     <main className={styles.page}>
+      <RecordView carId={car.id} />
+
       <div className="container">
         <div className={styles.layout}>
           <div className={styles.left}>
