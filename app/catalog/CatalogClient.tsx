@@ -3,12 +3,13 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import CarCard from "@/components/CarCard/CarCard";
 import CatalogFilters from "@/components/CatalogFilters/CatalogFilters";
 import CatalogLoader from "@/components/CatalogLoader/CatalogLoader";
-import { buildFiltersQuery } from "@/lib/filters";
-import { carsQueryOptions } from "@/lib/queries";
+import { canonicalCity } from "@/lib/cities";
+import { buildFiltersQuery, withoutCity } from "@/lib/filters";
+import { allCarsQueryOptions, carsQueryOptions } from "@/lib/queries";
 import type { CarFilters } from "@/types/car";
 import styles from "./catalog.module.css";
 import notFoundImage from "@/public/no-cars-found.png";
@@ -22,18 +23,34 @@ const SKELETON_CARDS = Array.from({ length: 12 }, (_, index) => index);
 export default function CatalogClient({ filters }: CatalogClientProps) {
   const router = useRouter();
   const [isNavigating, startTransition] = useTransition();
+  const serverFilters = withoutCity(filters);
+  const hasCityFilter = Boolean(filters.city);
 
-  const {
-    data,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-    isPending,
-    refetch,
-  } = useInfiniteQuery(carsQueryOptions(filters));
+  const infiniteQuery = useInfiniteQuery({
+    ...carsQueryOptions(serverFilters),
+    enabled: !hasCityFilter,
+  });
 
-  const cars = data?.pages.flatMap((page) => page.cars) ?? [];
+  const allCarsQuery = useQuery({
+    ...allCarsQueryOptions(serverFilters),
+    enabled: hasCityFilter,
+  });
+
+  const cars = hasCityFilter
+    ? (allCarsQuery.data ?? []).filter(
+        (car) => canonicalCity(car.location.city) === filters.city,
+      )
+    : (infiniteQuery.data?.pages.flatMap((page) => page.cars) ?? []);
+
+  const error = hasCityFilter ? allCarsQuery.error : infiniteQuery.error;
+  const isPending = hasCityFilter
+    ? allCarsQuery.isPending
+    : infiniteQuery.isPending;
+  const hasNextPage = !hasCityFilter && infiniteQuery.hasNextPage;
+  const isFetchingNextPage = infiniteQuery.isFetchingNextPage;
+  const fetchNextPage = infiniteQuery.fetchNextPage;
+  const refetch = hasCityFilter ? allCarsQuery.refetch : infiniteQuery.refetch;
+
   const isLoading = isPending || isNavigating;
   const isEmpty = !isLoading && !error && cars.length === 0;
 

@@ -8,19 +8,30 @@ and send a booking request.
 
 ## Features
 
-- **Home page (`/`)** — hero section with a `View Catalog` call to action.
-- **Catalog (`/catalog`)** — grid of cars with server-side filtering by brand,
-  price per hour and mileage range. Filters live in the URL
-  (`/catalog?brand=Buick&price=40&minMileage=1000&maxMileage=6000`), so a
-  filtered catalog can be shared, bookmarked and reloaded.
+- **Home page (`/`)** — hero section with a `View Catalog` call to action, and
+  a "Recently viewed" strip of the last cars you opened (kept in
+  `localStorage`, hidden until there is history to show).
+- **Catalog (`/catalog`)** — grid of cars filtered by brand, price per hour and
+  mileage range on the backend, plus a city filter. The API has no server-side
+  support for city, so picking one fetches every page matching the other
+  filters and narrows it client-side instead; "Kyiv"/"Kiev" and
+  "Odesa"/"Odessa" are merged into one option since the dataset spells the same
+  city both ways. Filters live in the URL
+  (`/catalog?brand=Buick&price=40&city=Kyiv`), so a filtered catalog can be
+  shared, bookmarked and reloaded.
 - **Load more pagination** — `useInfiniteQuery` from TanStack Query appends the
-  next page of cars while keeping the active filters.
+  next page of cars while keeping the active brand/price/mileage filters.
 - **Car details (`/catalog/[carId]`)** — full specifications, rental conditions,
   features and a photo. Opens in a new browser tab from the catalog card.
-- **Booking form** — Formik + Yup validation; a successful request shows a
-  toast notification.
+- **Booking form** — Formik + Yup validation, including a pick-up/return date
+  range (`react-datepicker`). The API only stores a free-text comment, so the
+  dates are folded into it before the request is sent. A successful request
+  shows a toast notification.
 - **Favorites (`/favorites`)** — save cars with the heart on a card. Saved ids
   are kept in `localStorage` and the header shows how many cars are saved.
+- **Dark mode** — a header toggle switches between light and dark palettes,
+  defaulting to the system preference on first visit. The choice is applied
+  before the first paint, so there is no flash of the wrong theme.
 - **Loading and error states** — a custom loader over a skeleton grid, an
   illustrated "no cars found" state and an error boundary with a retry action.
 
@@ -33,6 +44,7 @@ and send a booking request.
 | Data fetching | TanStack Query (`useInfiniteQuery`) + Axios |
 | Styling | CSS Modules with design tokens in `app/globals.css` |
 | Forms | Formik + Yup |
+| Dates | react-datepicker |
 | Icons | React Icons (Lucide, Octicons) |
 | Notifications | React Hot Toast |
 | Fonts | `next/font` — Manrope |
@@ -47,32 +59,38 @@ The deployed version was checked with Lighthouse on desktop:
 | Metric | Score |
 | --- | --- |
 | Performance | 100 |
-| Accessibility | 95 |
+| Accessibility | 96 |
 | Best Practices | 100 |
 | SEO | 100 |
 
-Audit screenshot:
-[docs/lighthouse/perfomance-results.png](./docs/lighthouse/perfomance-results.png)
+Audit screenshots:
+[docs/lighthouse/perfomance_results.png](./docs/lighthouse/perfomance-results.png)
+[docs/lighthouse/darkmode_perfomance_results.png](./docs/lighthouse/darkmode_perfomance_results.png)
 
 ## Architecture
 
 Server Components do the data fetching, Client Components own the interaction.
 
-- `app/catalog/page.tsx` (Server) reads the filters from `searchParams`,
-  prefetches the cars and the filter options into a `QueryClient` and passes the
-  dehydrated cache down through `HydrationBoundary`.
+- `app/catalog/page.tsx` (Server) reads the filters from `searchParams` and
+  prefetches into a `QueryClient`: the paginated `useInfiniteQuery` when no
+  city is picked, or every matching page at once when it is — so the client
+  never fetches something the server hasn't already warmed up.
 - `app/catalog/CatalogClient.tsx` (Client) subscribes to the same query keys, so
-  the first paint already shows data, then handles Load more and filter changes.
+  the first paint already shows data, then handles Load more, filter changes
+  and the city narrowing.
 - `app/catalog/[carId]/page.tsx` (Server) fetches one car and renders the
-  details; only the booking form is a Client Component.
+  details; the booking form and the "recently viewed" tracker are the only
+  Client Components on the page.
 - `lib/queries.ts` holds the shared query definitions so the server and the
   client can never drift apart.
 
 ```
 app/            routes, layouts, metadata
 components/     UI components, each with its own CSS module
-hooks/          useFavorites (localStorage + useSyncExternalStore)
-lib/            api client, query options, filter helpers, formatting
+hooks/          useFavorites, useRecentlyViewed, useTheme — all localStorage
+                + useSyncExternalStore
+lib/            api client, query options, filter helpers, city
+                normalisation, formatting
 providers/      TanStack Query provider
 types/          shared API types
 ```

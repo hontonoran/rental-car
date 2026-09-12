@@ -35,6 +35,10 @@
   border: none;
 }
 
+.city {
+  width: 180px;
+}
+
 .legend {
   padding: 0;
   margin-bottom: 8px;
@@ -112,7 +116,7 @@
   color: var(--color-main);
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1379px) {
   .form {
     width: 100%;
     align-items: center;
@@ -132,7 +136,8 @@
 @media (max-width: 560px) {
   .brand,
   .price,
-  .mileage {
+  .mileage,
+  .city {
     width: 100%;
     max-width: 320px;
   }

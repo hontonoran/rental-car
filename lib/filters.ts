@@ -2,7 +2,13 @@ import type { CarFilters } from "@/types/car";
 
 export type RawSearchParams = Record<string, string | string[] | undefined>;
 
-const FILTER_KEYS = ["brand", "price", "minMileage", "maxMileage"] as const;
+const FILTER_KEYS = [
+  "brand",
+  "price",
+  "minMileage",
+  "maxMileage",
+  "city",
+] as const;
 
 function firstValue(value: string | string[] | undefined) {
   return (Array.isArray(value) ? value[0] : value)?.trim() ?? "";
@@ -18,6 +24,16 @@ export function parseFilters(searchParams: RawSearchParams): CarFilters {
     price: toDigits(firstValue(searchParams.price)),
     minMileage: toDigits(firstValue(searchParams.minMileage)),
     maxMileage: toDigits(firstValue(searchParams.maxMileage)),
+    city: firstValue(searchParams.city),
+  };
+}
+
+export function withoutCity(filters: CarFilters): CarFilters {
+  return {
+    brand: filters.brand,
+    price: filters.price,
+    minMileage: filters.minMileage,
+    maxMileage: filters.maxMileage,
   };
 }
 

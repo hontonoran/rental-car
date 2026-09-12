@@ -46,6 +46,7 @@ export interface CarFilters {
   price?: string;
   minMileage?: string;
   maxMileage?: string;
+  city?: string;
 }
 
 export interface BookingRequestPayload {

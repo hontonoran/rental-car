@@ -34,6 +34,22 @@ export async function getCars(
   return data;
 }
 
+export async function fetchAllCars(
+  filters: CarFilters,
+  signal?: AbortSignal,
+): Promise<Car[]> {
+  const firstPage = await getCars(1, filters, signal);
+  const pageNumbers = Array.from(
+    { length: Math.max(firstPage.totalPages - 1, 0) },
+    (_, index) => index + 2,
+  );
+  const restPages = await Promise.all(
+    pageNumbers.map((page) => getCars(page, filters, signal)),
+  );
+
+  return [firstPage, ...restPages].flatMap((page) => page.cars);
+}
+
 export async function getCarFilters(
   signal?: AbortSignal,
 ): Promise<FiltersResponse> {

@@ -6,9 +6,14 @@ import {
   noop,
 } from "@tanstack/react-query";
 import CatalogClient from "./CatalogClient";
-import { parseFilters } from "@/lib/filters";
+import { parseFilters, withoutCity } from "@/lib/filters";
 import type { RawSearchParams } from "@/lib/filters";
-import { carFiltersQueryOptions, carsQueryOptions } from "@/lib/queries";
+import {
+  allCarsQueryOptions,
+  carCitiesQueryOptions,
+  carFiltersQueryOptions,
+  carsQueryOptions,
+} from "@/lib/queries";
 import { OG_IMAGE, SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -33,11 +38,17 @@ interface CatalogPageProps {
 
 export default async function CatalogPage({ searchParams }: CatalogPageProps) {
   const filters = parseFilters(await searchParams);
+  const serverFilters = withoutCity(filters);
   const queryClient = new QueryClient();
 
   await Promise.all([
-    queryClient.infiniteQuery(carsQueryOptions(filters)).catch(noop),
+    filters.city
+      ? queryClient.query(allCarsQueryOptions(serverFilters)).catch(noop)
+      : queryClient
+          .infiniteQuery(carsQueryOptions(serverFilters))
+          .catch(noop),
     queryClient.query(carFiltersQueryOptions()).catch(noop),
+    queryClient.query(carCitiesQueryOptions()).catch(noop),
   ]);
 
   return (
