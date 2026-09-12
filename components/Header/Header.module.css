@@ -2,7 +2,10 @@
   position: relative;
   z-index: 10;
   border-bottom: 1px solid var(--color-badges);
-  background-color: var(--color-white);
+  background-color: var(--color-surface);
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
 }
 
 .inner {
@@ -16,6 +19,12 @@
 .logo {
   display: inline-flex;
   align-items: center;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
 
 .nav {
@@ -62,6 +71,10 @@
 }
 
 @media (max-width: 480px) {
+  .right {
+    gap: 12px;
+  }
+
   .nav {
     gap: 16px;
   }

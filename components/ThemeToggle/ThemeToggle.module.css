@@ -1,0 +1,26 @@
+.toggle {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-gray-light);
+  border-radius: var(--radius-md);
+  background: none;
+  color: var(--color-main);
+  transition:
+    border-color var(--transition),
+    color var(--transition);
+}
+
+.toggle:hover,
+.toggle:focus-visible {
+  border-color: var(--color-blue);
+  color: var(--color-blue);
+}
+
+.toggle svg {
+  width: 18px;
+  height: 18px;
+}

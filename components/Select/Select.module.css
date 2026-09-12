@@ -22,7 +22,7 @@
   padding: 12px 16px;
   border: none;
   border-radius: var(--radius-md);
-  background-color: var(--color-white);
+  background-color: var(--color-surface);
   font-size: 16px;
   line-height: 20px;
   font-weight: 500;
@@ -61,7 +61,7 @@
   padding: 14px 8px 14px 18px;
   overflow-y: auto;
   border-radius: var(--radius-md);
-  background-color: var(--color-white);
+  background-color: var(--color-surface);
   box-shadow: 0 4px 36px rgba(16, 24, 40, 0.12);
   scrollbar-width: thin;
   scrollbar-color: var(--color-gray-light) transparent;

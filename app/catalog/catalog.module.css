@@ -65,19 +65,19 @@
   gap: 24px;
   padding: 16px;
   border-radius: var(--radius-lg);
-  background-color: var(--color-white);
+  background-color: var(--color-surface);
 }
 
 .skeletonImage {
   height: 268px;
   border-radius: 14px;
-  background-color: #e7eaee;
+  background-color: var(--color-skeleton-1);
 }
 
 .skeletonLine {
   height: 20px;
   border-radius: 4px;
-  background-color: #eceff3;
+  background-color: var(--color-skeleton-2);
 }
 
 .skeletonBox {

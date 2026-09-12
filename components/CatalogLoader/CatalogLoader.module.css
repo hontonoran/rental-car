@@ -11,7 +11,7 @@
   justify-content: center;
   padding: 48px;
   border-radius: 4px;
-  background-color: var(--color-white);
+  background-color: var(--color-surface);
   box-shadow: 0 8px 32px rgba(16, 24, 40, 0.08);
   text-align: center;
   transform: translateX(-50%);
