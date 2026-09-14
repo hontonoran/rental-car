@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { FormEvent } from "react";
+import type { SubmitEvent } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Select from "@/components/Select/Select";
 import type { SelectOption } from "@/components/Select/Select";
@@ -72,7 +72,7 @@ export default function CatalogFilters({
   const isOptionsUnavailable = isPending || isError;
   const isCityUnavailable = isCitiesPending || isCitiesError;
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     onSubmit({ brand, price, minMileage, maxMileage, city });
   };
